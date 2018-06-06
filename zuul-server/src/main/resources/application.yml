@@ -1,0 +1,21 @@
+zuul:
+  prefix: 
+  routes:
+    forex-service:
+      path: /forex/**
+      service-id: forex-service
+    db-service:
+      path: /currency-converter/**
+      service-id: currency-conversion-service
+      
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+    
+server:
+  port: 8084
+  
+spring:
+  application:
+    name: zuul-service
