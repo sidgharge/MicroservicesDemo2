@@ -3,9 +3,11 @@ zuul:
   routes:
     forex-service:
       path: /forex/**
+      sensitive-headers: 
       service-id: forex-service
     db-service:
       path: /currency-converter/**
+      sensitive-headers: 
       service-id: currency-conversion-service
       
 eureka:

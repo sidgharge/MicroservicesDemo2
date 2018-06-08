@@ -1,4 +1,4 @@
-package com.bridgelabz.zuul.config;
+/*package com.bridgelabz.zuul.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,3 +18,4 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 				.authenticated();
 	}
 }
+*/
