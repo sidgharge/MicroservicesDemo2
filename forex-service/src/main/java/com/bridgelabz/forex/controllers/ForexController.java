@@ -1,5 +1,7 @@
 package com.bridgelabz.forex.controllers;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,15 +16,20 @@ public class ForexController {
 
 	@Value("${server.port}")
 	private int port;
-	
+
 	@Autowired
 	private ExchangeValueRepository exchangeValueRepository;
-	
+
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public ExchangeValue retrievExchangeValue(@PathVariable String from, @PathVariable String to) {
 		ExchangeValue exchangeValue = exchangeValueRepository.findByCurrencyFromAndCurrencyTo(from, to);
 		exchangeValue.setPort(port);
 		return exchangeValue;
 	}
-	
+
+	@GetMapping("/currency-exchange/secured/{name}")
+	public String sayHello(@PathVariable String name) {
+		System.out.printf("Inside FOREX SERVICE with name %s", name);
+		return "Hello " + name + " " + UUID.randomUUID().toString();
+	}
 }

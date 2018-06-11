@@ -1,14 +1,15 @@
 zuul:
-  prefix: 
   routes:
     forex-service:
       path: /forex/**
-      sensitive-headers: 
       service-id: forex-service
+      sensitive-headers: 
     db-service:
       path: /currency-converter/**
-      sensitive-headers: 
       service-id: currency-conversion-service
+      sensitive-headers: 
+#  ignored-headers: Authorization
+#  ignore-security-headers: false
       
 eureka:
   client:
