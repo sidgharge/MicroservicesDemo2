@@ -28,8 +28,9 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("client-id").secret("client-secret").scopes("Foo").autoApprove(true).authorities("foo_read", "foo_write")
-				.authorizedGrantTypes("implicit", "refresh_token", "password", "authorization_code", "client_credentials");
+		clients.inMemory().withClient("client-id").secret("client-secret").scopes("Foo").autoApprove(true)
+				.authorities("foo_read", "foo_write").authorizedGrantTypes("implicit", "refresh_token", "password",
+						"authorization_code", "client_credentials");
 	}
 
 	@Override

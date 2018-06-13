@@ -1,6 +1,9 @@
 package com.bridgelabz.conversion.controllers;
 
+import java.util.Map;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,5 +35,10 @@ public class SecurityController {
 	public String sayHello(@PathVariable String name, @RequestHeader("AUthorization") String token) {
 		System.out.printf("Request with name %s inside CURRENCY SERVICE", name);
 		return proxy.sayHello(name, token);
+	}
+	
+	@GetMapping("/params")
+	public Map<String, String[]> getRequest(@RequestHeader("AUthorization") String token, HttpServletRequest req) {
+		return req.getParameterMap(); 
 	}
 }

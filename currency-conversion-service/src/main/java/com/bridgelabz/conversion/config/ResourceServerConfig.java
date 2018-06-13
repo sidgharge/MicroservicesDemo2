@@ -1,5 +1,6 @@
 package com.bridgelabz.conversion.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -15,6 +16,9 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
+	
+	@Autowired
+	CustomEntryPoint point;
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
@@ -22,6 +26,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 				// .antMatchers("/springjwt/**" ).authenticated();
 				.antMatchers("/secured/read").hasAnyAuthority("FOO_READ").antMatchers("/secured/write")
 				.hasAnyAuthority("FOO_WRITE").anyRequest().authenticated();
+		
+		http.exceptionHandling().authenticationEntryPoint(point);
 	}
 
 	@Override

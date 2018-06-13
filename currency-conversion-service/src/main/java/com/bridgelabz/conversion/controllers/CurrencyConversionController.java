@@ -1,6 +1,9 @@
 package com.bridgelabz.conversion.controllers;
 
 import java.math.BigDecimal;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,5 +29,10 @@ public class CurrencyConversionController {
 		response.setQuantity(quantity);
 		response.setTotalCalculatedAmount(quantity.multiply(response.getConversionMultiple()));
 		return response;
+	}
+	
+	@GetMapping("/currency-converter/params")
+	public Map<String, String[]> getRequest(HttpServletRequest req) {
+		return req.getParameterMap(); 
 	}
 }
