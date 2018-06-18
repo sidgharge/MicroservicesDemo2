@@ -10,13 +10,18 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-	@Override
+	/*@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.requestMatchers().and().authorizeRequests().antMatchers("/actuator/**", "/api-docs/**", "/forex/**").permitAll()
 				// .antMatchers("/springjwt/**" ).authenticated();
 				.antMatchers("/currency-converter/secured/read").hasAnyAuthority("FOO_READ")
 				.antMatchers("/currency-converter/secured/write").hasAnyAuthority("FOO_WRITE").anyRequest()
 				.authenticated();
+	}*/
+	
+	@Override
+	public void configure(HttpSecurity http) throws Exception {
+		http.requestMatchers().and().authorizeRequests().antMatchers("/**").permitAll();
 	}
 	
 }

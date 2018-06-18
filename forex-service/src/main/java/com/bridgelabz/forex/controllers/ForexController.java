@@ -1,5 +1,7 @@
 package com.bridgelabz.forex.controllers;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,12 @@ public class ForexController {
 		ExchangeValue exchangeValue = exchangeValueRepository.findByCurrencyFromAndCurrencyTo(from, to);
 		exchangeValue.setPort(port);
 		return exchangeValue;
+	}
+	
+	@GetMapping("/random")
+	public String getRandomString() {
+		throw new RuntimeException("Yo");
+		//return "String: " + UUID.randomUUID().toString();
 	}
 	
 }

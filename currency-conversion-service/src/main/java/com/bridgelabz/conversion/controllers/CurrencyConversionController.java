@@ -27,4 +27,10 @@ public class CurrencyConversionController {
 		response.setTotalCalculatedAmount(quantity.multiply(response.getConversionMultiple()));
 		return response;
 	}
+	
+	@GetMapping("/test")
+	public String getRandom() {
+		return proxy.getRandomString();
+	}
+	
 }
